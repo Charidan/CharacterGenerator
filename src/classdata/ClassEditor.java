@@ -9,7 +9,7 @@ public class ClassEditor
     public static void main(String[] args)
     {
         // TODO make a GUI for ClassEditor
-
+        //random test comment which needs removing.
     }
 
 }
