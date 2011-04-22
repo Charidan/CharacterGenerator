@@ -14,13 +14,13 @@ import javax.swing.table.AbstractTableModel;
  */
 public class ClassTableModel extends AbstractTableModel
 {
-
+    private static final long serialVersionUID = 1L;
     private TreeSet<classdata.CharClass> list = new TreeSet<classdata.CharClass>(new ClassComparator());
 
     //TODO remove test code constructor
     public ClassTableModel()
     {
-        list.add(new classdata.StormLord());
+        list.add(classdata.CharClass.STORM_LORD);
     }
 
     public int getRowCount()
@@ -49,6 +49,7 @@ public class ClassTableModel extends AbstractTableModel
         else return "Error - Column should not exist.";
     }
 
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     @Override
     public Class getColumnClass(int c)
     {
