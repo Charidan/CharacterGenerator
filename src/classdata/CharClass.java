@@ -67,7 +67,7 @@ public class CharClass
     public int getSkillPoints() { return skillPoints; }
     public int getCasterLevel() { return casterLevel; }
     public String getDescription() { return description; }
-    public ArrayList<dataform.ClassPower> getPowers() {  return powers; }
+    public ArrayList<dataform.ClassPower> getPowers() { return powers; }
     
     public void print(PrintStream p)
     {
@@ -82,6 +82,4 @@ public class CharClass
         p.println(casterLevel);
         p.println(description);
     }
-
-    
 }
