@@ -6,6 +6,7 @@
 package classdata;
 
 import java.io.PrintStream;
+import java.util.ArrayList;
 
 /**
  *
@@ -30,9 +31,10 @@ public class CharClass
     private int skillPoints;
     private int casterLevel;
     private String description;
+    private ArrayList<dataform.ClassPower> powers = new ArrayList<dataform.ClassPower>();
     
     public static final CharClass STORM_LORD = new CharClass("Storm Lord", 20, AVERAGE_PROGRESSION,
-            GOOD_PROGRESSION, GOOD_PROGRESSION, POOR_PROGRESSION, 8, 4, CL_PER_LEVEL,
+            GOOD_PROGRESSION, GOOD_PROGRESSION, POOR_PROGRESSION, 8, 4, CL_PER_LEVEL, new ArrayList<dataform.ClassPower>(),
             "A Storm Lord is really in touch with the primal power "+
             "of a big ass storm. He can channel it into baddassery. Storm "+
             "Lords are more prevalent in races that deal with storms. "+
@@ -40,7 +42,7 @@ public class CharClass
             "some or all of them, and may prefer one type to another.");
 
     public CharClass(String name, int levelCount, int bab, int fort, int ref, int will,
-            int hdSize, int skillPoints, int casterLevel, String description)
+            int hdSize, int skillPoints, int casterLevel, ArrayList<dataform.ClassPower> powers, String description)
     {
         this.name = name;
         this.levelCount = levelCount;
@@ -52,6 +54,7 @@ public class CharClass
         this.skillPoints = skillPoints;
         this.casterLevel = casterLevel;
         this.description = description;
+        this.powers = powers;
     }
     
     public String getName() { return name; }
@@ -64,6 +67,7 @@ public class CharClass
     public int getSkillPoints() { return skillPoints; }
     public int getCasterLevel() { return casterLevel; }
     public String getDescription() { return description; }
+    public ArrayList<dataform.ClassPower> getPowers() {  return powers; }
     
     public void print(PrintStream p)
     {
@@ -78,4 +82,6 @@ public class CharClass
         p.println(casterLevel);
         p.println(description);
     }
+
+    
 }
