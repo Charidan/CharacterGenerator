@@ -3,16 +3,36 @@ package classdata;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import dataform.ClassPower;
+import java.io.File;
 
 public class ClassEditor
 {
+    //public static final String CLASS_FOLDER = "C:/Users/Charidan/Desktop/classdata/"; //richardPC
+    public static final String CLASS_FOLDER = "~/Eclipse/classdata/"; //richardlaptop
+    
+    static
+    {
+        if(!new File(CLASS_FOLDER.substring(0, CLASS_FOLDER.length())).exists())
+        {
+            System.out.println("Change classdata folder designation in ClassEditor.");
+            System.out.println("Failed folder attempted: "+CLASS_FOLDER);
+            System.exit(1);
+        }
+    }
+    
     private static JFrame win = new JFrame("Class Editor");
     private static JPanel panel = new JPanel(new GridBagLayout());
     
@@ -25,7 +45,9 @@ public class ClassEditor
     private static JComboBox casterLevelCombo = new JComboBox(new ProgComboBoxModel(ProgComboBoxModel.CL_SET));
     private static JTextField hdBox = new JTextField(5);
     private static JTextField skillpointBox = new JTextField(5);
-    private static JTextField powerBox = new JTextField(5);
+    private static JTextArea descriptionBox = new JTextArea();
+    private static JList powerList = new JList();
+    private static JScrollPane powerScroll = new JScrollPane(powerList);
     
     private static JLabel nameLabel = new JLabel("Name:");
     private static JLabel levelCountLabel = new JLabel("Level Count:");
@@ -36,6 +58,7 @@ public class ClassEditor
     private static JLabel casterLevelLabel = new JLabel("Caster Level:");
     private static JLabel hdLabel = new JLabel("HD:");
     private static JLabel skillpointLabel = new JLabel("Skill Points:");
+    private static JLabel descriptionLabel = new JLabel("Description:");
     private static JLabel powerLabel = new JLabel("Powers:");
     
     private static JPanel buttonPanel = new JPanel(new FlowLayout());
@@ -47,7 +70,6 @@ public class ClassEditor
      */
     public static void main(String[] args)
     {
-        // TODO make a GUI for ClassEditor
         win.setTitle("Class Editor");
         win.setSize(800,600);
         win.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -79,6 +101,10 @@ public class ClassEditor
         panel.add(casterLevelCombo, endline);
         panel.add(skillpointLabel, labelgbc);
         panel.add(skillpointBox, endline);
+        panel.add(descriptionLabel, labelgbc);
+        panel.add(descriptionBox, endline);
+        panel.add(powerLabel, labelgbc);
+        panel.add(powerScroll, endline);
         
         GridBagConstraints bpc = new GridBagConstraints();
         bpc.anchor = GridBagConstraints.SOUTH;
@@ -92,6 +118,61 @@ public class ClassEditor
         win.add(panel);
         win.pack();
         win.setVisible(true);
+    }
+
+    public String getName()
+    {
+        return nameBox.getText();
+    }
+
+    public int getHDSize()
+    {
+        return new Integer(skillpointBox.getText());
+    }
+
+    public int getSkillPoints()
+    {
+        return new Integer(skillpointBox.getText());
+    }
+
+    public int getFort()
+    {
+        return (Integer) fortCombo.getSelectedItem();
+    }
+
+    public int getLevelCount()
+    {
+        return new Integer(skillpointBox.getText());
+    }
+
+    public int getBAB()
+    {
+        return (Integer) babCombo.getSelectedItem();
+    }
+
+    public int getCasterLevel()
+    {
+        return (Integer) casterLevelCombo.getSelectedItem();
+    }
+
+    public int getRef()
+    {
+        return (Integer) refCombo.getSelectedItem();
+    }
+
+    public int getWill()
+    {
+        return (Integer) willCombo.getSelectedItem();
+    }
+
+    public ArrayList<ClassPower> getPowers()
+    {
+        return null;
+    }
+
+    public String getDescription()
+    {
+        return descriptionBox.getText();
     }
 
 }

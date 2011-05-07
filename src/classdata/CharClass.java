@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Julian
+ * @author Charidan
  */
 public class CharClass
 {
@@ -22,6 +22,7 @@ public class CharClass
     public static final int CL_PER_LEVEL = 1;
 
     private String name;
+    private String fileName;
     private int levelCount;
     private int bab;
     private int fort;
@@ -41,10 +42,25 @@ public class CharClass
             "Storms take many forms, and Storm Lords can be in touch with "+
             "some or all of them, and may prefer one type to another.");
 
+    /**
+     * 
+     * @param name
+     * @param levelCount
+     * @param bab
+     * @param fort
+     * @param ref
+     * @param will
+     * @param hdSize
+     * @param skillPoints
+     * @param casterLevel
+     * @param powers
+     * @param description
+     */
     public CharClass(String name, int levelCount, int bab, int fort, int ref, int will,
             int hdSize, int skillPoints, int casterLevel, ArrayList<dataform.ClassPower> powers, String description)
     {
         this.name = name;
+        fileName = name.replaceAll(" ", "");
         this.levelCount = levelCount;
         this.bab = bab;
         this.fort = fort;
@@ -58,6 +74,7 @@ public class CharClass
     }
     
     public String getName() { return name; }
+    public String getFileName() { return fileName; }
     public int getBAB() { return bab; }
     public int getLevelCount() { return levelCount; }
     public int getFort() { return fort; }
@@ -81,5 +98,8 @@ public class CharClass
         p.println(skillPoints);
         p.println(casterLevel);
         p.println(description);
+        //TODO: save format for powers
+        p.flush();
+        p.close();
     }
 }
