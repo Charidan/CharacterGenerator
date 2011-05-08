@@ -33,8 +33,8 @@ public class CharClass
     private int hdSize;
     private int skillPoints;
     private int casterLevel;
-    private String description;
     private ArrayList<dataform.ClassPower> powers = new ArrayList<dataform.ClassPower>();
+    private String description;
     
     public static final CharClass STORM_LORD = new CharClass("Storm Lord", 20, AVERAGE_PROGRESSION,
             GOOD_PROGRESSION, GOOD_PROGRESSION, POOR_PROGRESSION, 8, 4, CL_PER_LEVEL, new ArrayList<dataform.ClassPower>(),
@@ -71,8 +71,8 @@ public class CharClass
         this.hdSize = hdSize;
         this.skillPoints = skillPoints;
         this.casterLevel = casterLevel;
-        this.description = description;
         this.powers = powers;
+        this.description = description;
     }
     
     public String getName() { return name; }
@@ -85,8 +85,8 @@ public class CharClass
     public int getHDSize() { return hdSize; }
     public int getSkillPoints() { return skillPoints; }
     public int getCasterLevel() { return casterLevel; }
-    public String getDescription() { return description; }
     public ArrayList<dataform.ClassPower> getPowers() { return powers; }
+    public String getDescription() { return description; }
     
     public void print(PrintStream p)
     {
@@ -99,12 +99,12 @@ public class CharClass
         p.println(will);
         p.println(casterLevel);
         p.println(skillPoints);
-        p.println(description);
         for(dataform.ClassPower power: powers)
         {
             p.print(power.getName());
             p.print(";");
         }
+        p.println(description);
         p.flush();
         p.close();
     }

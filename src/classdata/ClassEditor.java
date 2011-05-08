@@ -100,6 +100,8 @@ public class ClassEditor
         panel.add(casterLevelCombo, endline);
         panel.add(skillpointLabel, labelgbc);
         panel.add(skillpointBox, endline);
+        panel.add(powerLabel, labelgbc);
+        panel.add(powerScroll, endline);
         
         descriptionArea.setColumns(20);
         descriptionArea.setRows(7);
@@ -109,8 +111,6 @@ public class ClassEditor
         
         panel.add(descriptionLabel, labelgbc);
         panel.add(descriptionScroll, endline);
-        panel.add(powerLabel, labelgbc);
-        panel.add(powerScroll, endline);
         
         GridBagConstraints bpc = new GridBagConstraints();
         bpc.anchor = GridBagConstraints.SOUTH;
