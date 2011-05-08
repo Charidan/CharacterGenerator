@@ -14,6 +14,8 @@ import java.util.ArrayList;
  */
 public class CharClass
 {
+    public static final int NULL_PROGRESSION = -1;
+    
     public static final int GOOD_PROGRESSION = 0;
     public static final int AVERAGE_PROGRESSION = 1;
     public static final int POOR_PROGRESSION = 2;
@@ -90,15 +92,15 @@ public class CharClass
     {
         p.println(name);
         p.println(levelCount);
+        p.println(hdSize);
         p.println(bab);
         p.println(fort);
         p.println(ref);
         p.println(will);
-        p.println(hdSize);
-        p.println(skillPoints);
         p.println(casterLevel);
+        p.println(skillPoints);
         p.println(description);
-        //TODO: save format for powers
+        //TODO: create a save format for powers
         p.flush();
         p.close();
     }

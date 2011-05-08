@@ -14,14 +14,15 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
 
 import dataform.ClassPower;
 import java.io.File;
 
 public class ClassEditor
 {
-    //public static final String CLASS_FOLDER = "C:/Users/Charidan/Desktop/classdata/"; //richardPC
-    public static final String CLASS_FOLDER = "~/Eclipse/classdata/"; //richardlaptop
+    public static final String CLASS_FOLDER = "C:/Users/Charidan/Desktop/classdata/"; //richardPC
+    //public static final String CLASS_FOLDER = "~/Eclipse/classdata/"; //richardlaptop
     
     static
     {
@@ -45,8 +46,9 @@ public class ClassEditor
     private static JComboBox casterLevelCombo = new JComboBox(new ProgComboBoxModel(ProgComboBoxModel.CL_SET));
     private static JTextField hdBox = new JTextField(5);
     private static JTextField skillpointBox = new JTextField(5);
-    private static JTextArea descriptionBox = new JTextArea();
-    private static JList powerList = new JList();
+    private static JTextArea descriptionArea = new JTextArea();
+    private static JScrollPane descriptionScroll = new JScrollPane(descriptionArea);
+    private static JList powerList = new JList(new SortedListModel(new ClassPowerComparator()));
     private static JScrollPane powerScroll = new JScrollPane(powerList);
     
     private static JLabel nameLabel = new JLabel("Name:");
@@ -64,11 +66,8 @@ public class ClassEditor
     private static JPanel buttonPanel = new JPanel(new FlowLayout());
     private static JButton saveButton = new JButton("SAVE");
     private static JButton loadButton = new JButton("LOAD");
-    
-    /**
-     * @param args
-     */
-    public static void main(String[] args)
+        
+    public ClassEditor()
     {
         win.setTitle("Class Editor");
         win.setSize(800,600);
@@ -101,8 +100,15 @@ public class ClassEditor
         panel.add(casterLevelCombo, endline);
         panel.add(skillpointLabel, labelgbc);
         panel.add(skillpointBox, endline);
+        
+        descriptionArea.setColumns(20);
+        descriptionArea.setRows(7);
+        descriptionArea.setLineWrap(true);
+        descriptionArea.setWrapStyleWord(true);
+        descriptionScroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        
         panel.add(descriptionLabel, labelgbc);
-        panel.add(descriptionBox, endline);
+        panel.add(descriptionScroll, endline);
         panel.add(powerLabel, labelgbc);
         panel.add(powerScroll, endline);
         
@@ -110,6 +116,8 @@ public class ClassEditor
         bpc.anchor = GridBagConstraints.SOUTH;
         bpc.fill = GridBagConstraints.HORIZONTAL;
         bpc.gridwidth = GridBagConstraints.REMAINDER;
+        
+        saveButton.addActionListener(new CESaveActionListener(this));
         
         buttonPanel.add(loadButton);
         buttonPanel.add(saveButton);
@@ -119,6 +127,14 @@ public class ClassEditor
         win.pack();
         win.setVisible(true);
     }
+    
+    /**
+     * @param args
+     */
+    public static void main(String[] args)
+    {
+        new ClassEditor();
+    }
 
     public String getName()
     {
@@ -127,7 +143,7 @@ public class ClassEditor
 
     public int getHDSize()
     {
-        return new Integer(skillpointBox.getText());
+        return new Integer(hdBox.getText());
     }
 
     public int getSkillPoints()
@@ -137,32 +153,32 @@ public class ClassEditor
 
     public int getFort()
     {
-        return (Integer) fortCombo.getSelectedItem();
+        return ProgComboBoxModel.prog2int((String) fortCombo.getSelectedItem());
     }
 
     public int getLevelCount()
     {
-        return new Integer(skillpointBox.getText());
+        return new Integer(levelCountBox.getText());
     }
 
     public int getBAB()
     {
-        return (Integer) babCombo.getSelectedItem();
+        return ProgComboBoxModel.prog2int((String) babCombo.getSelectedItem());
     }
 
     public int getCasterLevel()
     {
-        return (Integer) casterLevelCombo.getSelectedItem();
+        return ProgComboBoxModel.prog2int((String) casterLevelCombo.getSelectedItem());
     }
 
     public int getRef()
     {
-        return (Integer) refCombo.getSelectedItem();
+        return ProgComboBoxModel.prog2int((String) refCombo.getSelectedItem());
     }
 
     public int getWill()
     {
-        return (Integer) willCombo.getSelectedItem();
+        return ProgComboBoxModel.prog2int((String) willCombo.getSelectedItem());
     }
 
     public ArrayList<ClassPower> getPowers()
@@ -172,7 +188,7 @@ public class ClassEditor
 
     public String getDescription()
     {
-        return descriptionBox.getText();
+        return descriptionArea.getText();
     }
 
 }

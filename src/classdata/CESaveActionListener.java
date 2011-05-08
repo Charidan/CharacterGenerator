@@ -10,20 +10,20 @@ import javax.swing.JOptionPane;
 
 public class CESaveActionListener implements ActionListener
 {
-    ClassEditor win;
+    ClassEditor editor;
     
     public CESaveActionListener(ClassEditor parent)
     {
-        win = parent;
+        editor = parent;
     }
 
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        CharClass c = new CharClass(win.getName(), win.getLevelCount(), win.getBAB(), win.getFort(),
-                win.getRef(), win.getWill(), win.getHDSize(), win.getSkillPoints(), win.getCasterLevel(),
-                win.getPowers(), win.getDescription());
-        File f = new File(ClassEditor.CLASS_FOLDER+c.getFileName());
+        CharClass c = new CharClass(editor.getName(), editor.getLevelCount(), editor.getBAB(), editor.getFort(),
+                editor.getRef(), editor.getWill(), editor.getHDSize(), editor.getSkillPoints(), editor.getCasterLevel(),
+                editor.getPowers(), editor.getDescription());
+        File f = new File(ClassEditor.CLASS_FOLDER+c.getFileName()+".charclass");
         if(!f.exists())
         {
             try
