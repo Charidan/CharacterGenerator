@@ -100,7 +100,11 @@ public class CharClass
         p.println(casterLevel);
         p.println(skillPoints);
         p.println(description);
-        //TODO: create a save format for powers
+        for(dataform.ClassPower power: powers)
+        {
+            p.print(power.getName());
+            p.print(";");
+        }
         p.flush();
         p.close();
     }
