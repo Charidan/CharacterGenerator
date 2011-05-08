@@ -7,6 +7,7 @@ package dataform;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import powerdata.ClassPower;
 
 /**
  *

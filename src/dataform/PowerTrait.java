@@ -5,17 +5,41 @@
 
 package dataform;
 
+import java.io.PrintStream;
+
 /**
  *
  * @author Julian
  */
-public abstract class PowerTrait
+public class PowerTrait
 {
     ProgressionType progType;
     private String description;
-    private String type;
+    private String base;
+    private String effected;
 
+    public PowerTrait(String baseStat, String effectedStat, ProgressionType progType, String description)
+    {
+        base = baseStat;
+        effected = effectedStat;
+        this.progType = progType;
+        this.description = description;
+    }
+    
     public String getDescription() { return description; }
-    public String getType() { return type; }
-    public abstract String getProgValue(int scalar, int offset, int dieSize);
+    public String getBaseStat() { return base; }
+    public String getEffectedStat() { return effected; }
+    public ProgressionType getProgType() { return progType; }
+    
+    public String getValue()
+    {
+        return null;
+    }
+
+    public void print(PrintStream p)
+    {
+        // TODO Find save format for PowerTrait
+        
+    }
+    
 }

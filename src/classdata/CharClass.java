@@ -33,11 +33,11 @@ public class CharClass
     private int hdSize;
     private int skillPoints;
     private int casterLevel;
-    private ArrayList<dataform.ClassPower> powers = new ArrayList<dataform.ClassPower>();
+    private ArrayList<powerdata.ClassPower> powers = new ArrayList<powerdata.ClassPower>();
     private String description;
     
     public static final CharClass STORM_LORD = new CharClass("Storm Lord", 20, AVERAGE_PROGRESSION,
-            GOOD_PROGRESSION, GOOD_PROGRESSION, POOR_PROGRESSION, 8, 4, CL_PER_LEVEL, new ArrayList<dataform.ClassPower>(),
+            GOOD_PROGRESSION, GOOD_PROGRESSION, POOR_PROGRESSION, 8, 4, CL_PER_LEVEL, new ArrayList<powerdata.ClassPower>(),
             "A Storm Lord is really in touch with the primal power "+
             "of a big ass storm. He can channel it into baddassery. Storm "+
             "Lords are more prevalent in races that deal with storms. "+
@@ -59,7 +59,7 @@ public class CharClass
      * @param description
      */
     public CharClass(String name, int levelCount, int bab, int fort, int ref, int will,
-            int hdSize, int skillPoints, int casterLevel, ArrayList<dataform.ClassPower> powers, String description)
+            int hdSize, int skillPoints, int casterLevel, ArrayList<powerdata.ClassPower> powers, String description)
     {
         this.name = name;
         fileName = name.replaceAll(" ", "");
@@ -85,7 +85,7 @@ public class CharClass
     public int getHDSize() { return hdSize; }
     public int getSkillPoints() { return skillPoints; }
     public int getCasterLevel() { return casterLevel; }
-    public ArrayList<dataform.ClassPower> getPowers() { return powers; }
+    public ArrayList<powerdata.ClassPower> getPowers() { return powers; }
     public String getDescription() { return description; }
     
     public void print(PrintStream p)
@@ -99,7 +99,7 @@ public class CharClass
         p.println(will);
         p.println(casterLevel);
         p.println(skillPoints);
-        for(dataform.ClassPower power: powers)
+        for(powerdata.ClassPower power: powers)
         {
             p.print(power.getName());
             p.print(";");

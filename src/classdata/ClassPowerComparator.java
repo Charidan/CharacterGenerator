@@ -1,9 +1,9 @@
 package classdata;
 
 import java.util.Comparator;
-import dataform.ClassPower;
+import powerdata.ClassPower;
 
-public class ClassPowerComparator implements Comparator<dataform.ClassPower>
+public class ClassPowerComparator implements Comparator<powerdata.ClassPower>
 {
 
     @Override

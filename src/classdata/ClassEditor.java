@@ -15,14 +15,15 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
+import powerdata.ClassPower;
 
-import dataform.ClassPower;
 import java.io.File;
 
 public class ClassEditor
 {
-    public static final String CLASS_FOLDER = "C:/Users/Charidan/Desktop/classdata/"; //richardPC
-    //public static final String CLASS_FOLDER = "~/Eclipse/classdata/"; //richardlaptop
+    public static final String CLASS_FOLDER = "C:/Users/Charidan/Desktop/DnDCharGen/classdata/"; //richardPC
+    //public static final String CLASS_FOLDER = "~/Eclipse/DnDCharGen/classdata/"; //richardlaptop
+    //TODO: Remember to create DnDCharGen folder on laptop
     
     static
     {
